@@ -14,7 +14,7 @@
             <h4>Evidencia 4</h4>
             <div class="form-group">
                 <label>ID:</label>
-                <input type="search" class="form-control" id="txtI" placeholder="Ingresa ID">
+                <input type="search" class="form-control" id="txtID" placeholder="Ingresa ID">
             </div>
             <div class="form-group">
                 <label>Nombre</label>
@@ -37,32 +37,31 @@
             <button type="submit" class="btn btn-primary" id="btnBuscar" style="margin-top: 10px;">Buscar</button>
         </div>
     </body>
-    <script>
-        axios({
-            method: 'GET',
-            url: 'https://jsonplaceholder.typicode.com/users'
-        }).then(res => {
-            document.getElementById("btnBuscar").addEventListener("click", function () {
-                mostrar(res.data);
-            });
+</html>
+<script>
+    axios({
+        method: 'GET',
+        url: 'https://jsonplaceholder.typicode.com/users'
+    }).then(res => {
+        document.getElementById("btnBuscar").addEventListener("click", function () {
+            mostrar(res.data);
+        });
 
-        })
-            .catch(err => console.log(err))
+    })
+        .catch(err => console.log(err))
 
-        function mostrar(data) {
-            let n = document.getElementById('txtID').value
-            for (x of data) {
-                console.log(data);
-                if (n == x.id) {
-                    document.getElementById('txtNombre').value = x.name;
-                    document.getElementById('txtNombreUsuario').value = x.username;
-                    document.getElementById('txtEmail').value = x.email;
-                    document.getElementById('txtCalle').value = x.address.street;
-                    document.getElementById('txtNumero').value = x.address.suite;
-                    document.getElementById('txtColonia').value = x.address.city;
-                }
-
+    function mostrar(data) {
+        let n = document.getElementById('txtID').value
+        for (x of data) {
+            console.log(data);
+            if (n == x.id) {
+                document.getElementById('txtNombre').value = x.name;
+                document.getElementById('txtNombreUsuario').value = x.username;
+                document.getElementById('txtEmail').value = x.email;
+                document.getElementById('txtCalle').value = x.address.street;
+                document.getElementById('txtNumero').value = x.address.suite;
+                document.getElementById('txtColonia').value = x.address.city;
             }
         }
-    </script>
-</html>
+    }
+</script>
